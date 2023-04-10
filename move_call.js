@@ -5,14 +5,12 @@ const {
     RawSigner,
     TransactionBlock,
 } = require('@mysten/sui.js');
+const { packageObjectId, counterObjectId } = require('./config');
 
 // Generate a new Keypair
 const keypair = new Ed25519Keypair();
 const provider = new JsonRpcProvider(localnetConnection);
 const signer = new RawSigner(keypair, provider);
-
-const packageObjectId = '0x1bcc1bbea3855ffa14db94fce14d8873a0b9bff76a4f434d72f160c787262e02';
-const counterObjectId = '0x75347e6c80cbbe55bfb2cfb1def96cdf11461078108bd717c341c89d459e1578';
 
 (async () => {
     // 先获取sui
