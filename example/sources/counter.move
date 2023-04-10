@@ -2,9 +2,14 @@ module example::counter {
     use sui::transfer;
     use sui::object::{Self, UID};
     use sui::tx_context::{TxContext};
+    use sui::event;
 
     struct Counter has key {
         id: UID,
+        value: u64,
+    }
+
+    struct CountCollected has copy, drop {
         value: u64,
     }
 
@@ -18,5 +23,7 @@ module example::counter {
 
     public entry fun incr(counter: &mut Counter) {
         counter.value = counter.value + 1;
+
+        event::emit(CountCollected { value: counter.value });
     }
 }
