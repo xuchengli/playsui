@@ -1,21 +1,19 @@
 module example::counter {
     use sui::transfer;
     use sui::object::{Self, UID};
-    use sui::tx_context::{Self, TxContext};
+    use sui::tx_context::{TxContext};
 
     struct Counter has key {
         id: UID,
         value: u64,
     }
 
-    entry public fun getCounter(ctx: &mut TxContext) {
-        // sender address
-        let sender = tx_context::sender(ctx);
+    fun init(ctx: &mut TxContext) {
         let counter_obj = Counter {
             id: object::new(ctx),
             value: 0
         };
-        transfer::transfer(counter_obj, sender);
+        transfer::share_object(counter_obj);
     }
 
     public entry fun incr(counter: &mut Counter) {
