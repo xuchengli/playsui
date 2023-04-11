@@ -1,4 +1,4 @@
 module.exports = {
-    packageObjectId: '0x300d281219f0bcb45f3fa410e0b2a309e82a7defc068a844089a4b8ad1975504',
-    counterObjectId: '0x84226d0acd7a7ae7fd5878fc079a3f474808b7938699899559c6ad275b85a67b',
+    packageObjectId: '0xb9ce3ab8aa65edf693dabab64f7154c11f1b065ff2e71bd7b7b0902f99daca44',
+    counterObjectId: '0x0b3e2cb8d0aac15f4e78455613dfe5f263f6fc46527bb5829c2d9e5b3fd5b8a0',
 };

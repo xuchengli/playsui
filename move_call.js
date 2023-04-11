@@ -21,7 +21,7 @@ const signer = new RawSigner(keypair, provider);
 
     // 调合约
     const tx = new TransactionBlock();
-    tx.setGasBudget(10000);
+    tx.setGasBudget(10000000000);
     tx.moveCall({
         target: `${packageObjectId}::counter::incr`,
         arguments: [tx.object(`${counterObjectId}`)],
