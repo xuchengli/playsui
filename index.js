@@ -1,12 +1,13 @@
-const { JsonRpcProvider, localnetConnection } = require('@mysten/sui.js');
+const { JsonRpcProvider, localnetConnection, devnetConnection } = require('@mysten/sui.js');
 
 // connect to local RPC server
-const provider = new JsonRpcProvider(localnetConnection);
+// const provider = new JsonRpcProvider(localnetConnection);
+const provider = new JsonRpcProvider(devnetConnection);
 
 (async () => {
     // get tokens from the local faucet server
     const gasObjects = await provider.requestSuiFromFaucet(
-      '0xabf81ad9dfc1265343371b34204a74526add444603773afa4d01d34093fe2d5c',
+      '0xe42d79acbbc17c214518bad150b0e6d47c111c2796b4069520b15158a3915217',
     );
 
     console.log(gasObjects);
