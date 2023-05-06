@@ -54,5 +54,8 @@ function sleep(s) {
 
         await sleep(1);
     }
-    console.log(JSON.stringify(events, null, 2));
+
+    const specificEvents = events.filter(event => event.packageId === '0x5b77ec28a4077acb46e27e2421aa36b6bbdbe14b4165bc8a7024f10f0fde6112');
+    
+    console.log(JSON.stringify(specificEvents, null, 2));
 })();
