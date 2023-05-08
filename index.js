@@ -1,4 +1,5 @@
 const { JsonRpcProvider, localnetConnection, devnetConnection } = require('@mysten/sui.js');
+const moment = require('moment');
 
 // connect to local RPC server
 // const provider = new JsonRpcProvider(localnetConnection);
@@ -11,4 +12,7 @@ const provider = new JsonRpcProvider(devnetConnection);
     );
 
     console.log(gasObjects);
+
+    const now = moment(Number('1681798959688'));
+    console.log(now.format('YYYY-MM-DD HH:mm:ss'));
 })();

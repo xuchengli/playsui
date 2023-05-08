@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@mysten/sui.js": "^0.33.0"
+    "@mysten/sui.js": "^0.33.0",
+    "moment": "^2.29.4"
   }
 }
