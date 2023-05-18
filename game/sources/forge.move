@@ -2,7 +2,6 @@ module game::forge {
   use sui::object::{Self, UID};
   use sui::transfer;
   use sui::tx_context::{Self, TxContext};
-  use std::debug;
 
   const EInvalidSwordCreatedNumber: u64 = 1;
 
@@ -56,6 +55,7 @@ module game::forge {
   public fun test_sword_create() {
     use sui::tx_context;
     use sui::transfer;
+    use std::debug;
 
     let ctx = tx_context::dummy();
 
