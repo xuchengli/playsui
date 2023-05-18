@@ -2,6 +2,9 @@ module game::forge {
   use sui::object::{Self, UID};
   use sui::transfer;
   use sui::tx_context::{Self, TxContext};
+  use std::debug;
+
+  const EInvalidSwordCreatedNumber: u64 = 1;
 
   struct Sword has key, store {
     id: UID,
@@ -34,13 +37,15 @@ module game::forge {
     self.swords_created
   }
 
-  public entry fun sword_create(magic: u64, strength: u64, recipient: address, ctx: &mut TxContext) {
+  public entry fun sword_create(forge: &mut Forge, magic: u64, strength: u64, recipient: address, ctx: &mut TxContext) {
     let sword = Sword {
       id: object::new(ctx),
       magic,
       strength,
     };
     transfer::transfer(sword, recipient);
+
+    forge.swords_created = forge.swords_created + 1;
   }
 
   public entry fun sword_transfer(sword: Sword, recipient: address, _ctx: &mut TxContext) {
@@ -59,6 +64,8 @@ module game::forge {
       magic: 42,
       strength: 7,
     };
+
+    debug::print(&sword);
 
     assert!(magic(&sword) == 42 && strength(&sword) == 7, 1);
 
@@ -84,9 +91,21 @@ module game::forge {
     // second transaction executed by admin to create the sword
     test_scenario::next_tx(scenario, admin);
     {
+      // Extract the Forge object
+      let forge = test_scenario::take_from_sender<Forge>(scenario);
+      // Verify number of created swords
+      assert!(swords_created(&forge) == 0, EInvalidSwordCreatedNumber);
+
       // create the sword and transfer it to the initial owner
-      sword_create(42, 7, initial_owner, test_scenario::ctx(scenario));
+      sword_create(&mut forge, 42, 7, initial_owner, test_scenario::ctx(scenario));
+      // Verify number of created swords
+      assert!(swords_created(&forge) == 1, EInvalidSwordCreatedNumber);
+
+      // Return the Forge object to the object pool
+      test_scenario::return_to_sender(scenario, forge);
     };
+
+    // debug::print_stack_trace();
 
     // third transaction executed by the initial sword owner
     test_scenario::next_tx(scenario, initial_owner);
