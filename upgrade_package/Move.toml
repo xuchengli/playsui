@@ -1,10 +1,10 @@
 [package]
 name = "upgrade_package"
 version = "0.0.2"
-published-at = "0x2f02f1af12b87cc23124277b3ae63074966f8e63bb60df1682f4d946e6797844"
+published-at = "0x2e38ec2b92a21fb51ee070c90341c04bdcab379827c56a22e4c767f6acad3a3a"
 
 [dependencies]
 Sui = { local = "/Users/lixucheng/projects/sui/crates/sui-framework/packages/sui-framework" }
 
 [addresses]
-upgrade_package = "0x0"
+upgrade_package = "0x2f02f1af12b87cc23124277b3ae63074966f8e63bb60df1682f4d946e6797844"
