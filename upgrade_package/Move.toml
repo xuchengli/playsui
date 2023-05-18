@@ -1,6 +1,7 @@
 [package]
 name = "upgrade_package"
-version = "0.0.1"
+version = "0.0.2"
+published-at = "0x2f02f1af12b87cc23124277b3ae63074966f8e63bb60df1682f4d946e6797844"
 
 [dependencies]
 Sui = { local = "/Users/lixucheng/projects/sui/crates/sui-framework/packages/sui-framework" }
