@@ -7,7 +7,7 @@ const provider = new JsonRpcProvider(devnetConnection);
 
 (async () => {
     const txn = await provider.getTransactionBlock({
-        digest: '9dC5jj9iqj3q9P7gJtLup51LZe3QbybfHNhbgMwLx2AB',
+        digest: 'DpJgcfSfkZwwSk2mgkncUobzwd4aoDPSfZBkrUuN5VCv',
         options: {
             showEffects: true,
             showObjectChanges: true,

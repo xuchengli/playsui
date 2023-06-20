@@ -24,6 +24,7 @@ const {
             owner: address,
             options: {
                 showContent: true,
+                showPreviousTransaction: true,
                 showType: true,
             },
         });
